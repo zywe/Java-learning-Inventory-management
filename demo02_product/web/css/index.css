@@ -1,0 +1,68 @@
+body {
+    font: 14px Arial, sans-serif;
+    margin: 0px;
+}
+
+header {
+    padding: 10px 20px;
+    background: white;
+}
+
+header h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    background: white;
+}
+
+section {
+    width: 80%;
+    background-color: white;
+    margin-left: 10%;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+#tbl_product_list {
+    width: 80%;
+    line-height: 40px;
+    margin-left: 10%;
+}
+
+#tbl_product_list,
+#tbl_product_list tr,
+#tbl_product_list th,
+#tbl_product_list td {
+    border: 2px solid gray;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 18px;
+    font-family: "宋体";
+}
+
+.delImg {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+.productImg {
+    width: 120px;
+    height: 120px;
+    vertical-align: middle;
+}
+
+
+.btn{
+    width: 80px;
+    height: 24px;
+}
