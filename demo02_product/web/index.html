@@ -23,10 +23,10 @@
         <section>
             <table id="tbl_product_list">
                 <tr>
-                    <th>商品编号</th>
-                    <th>商品名称</th>
-                    <th>商品价格</th>
-                    <th>商品图片</th>
+                    <th>编号</th>
+                    <th>名称&nbsp;<img src="img/add01.png" alt="" class="addImg"></th>
+                    <th>价格</th>
+                    <th>图片</th>
                     <th>操作</th>
                 </tr>
 
@@ -47,10 +47,10 @@
             </table>
 
             <div style="width: 90%; margin-top: 5px;text-align: right">
-                <input type="button" value="首页" class="btn" >
-                <input type="button" value="上一页" class="btn">
-<!--                <input type="button" value="下一页" class="btn" th:onclick="|page(${session.pageNo+1})|" th:disabled="${session.pageNo==session.pageCount}>-->
-                <input type="button" value="尾页" class="btn">
+                <input type="button" value="首页" class="btn" th:onclick="|page(1)|">
+                <input type="button" value="上一页" class="btn" th:onclick="|page(${session.pageNo-1})|">
+                <input type="button" value="下一页" class="btn" th:onclick="|page(${session.pageNo+1})|">
+                <input type="button" value="尾页" class="btn" th:onclick="|page(${session.pageCount})|">
             </div>
         </section>
     </div>

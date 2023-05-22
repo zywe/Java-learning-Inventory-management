@@ -1,4 +1,4 @@
-function delFruit(fid){
+function delFruit(id){
     if(confirm('是否确认删除？')){
         window.location.href='product.do?id='+id+'&operate=del';
 

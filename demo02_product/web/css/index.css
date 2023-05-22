@@ -61,6 +61,12 @@ section {
     vertical-align: middle;
 }
 
+.addImg {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
 
 .btn{
     width: 80px;

@@ -41,6 +41,8 @@ public class ProductServlet extends ViewBaseServlet {
             case "index":
                 index(request,response);
                 break;
+            default:
+                throw new RuntimeException("operate值非法");
         }
 
 
