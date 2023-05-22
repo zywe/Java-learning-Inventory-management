@@ -18,7 +18,13 @@ public interface ProductDAO {
 
     int getProductCount(String keyword);
 
+    Product getProductById(Integer id);
 
+    void addProduct(Product product);
+
+    void delProduct(Integer id);
+
+    void updateProduct(Product product);
 
 
 }

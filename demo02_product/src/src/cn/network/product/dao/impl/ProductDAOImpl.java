@@ -27,5 +27,31 @@ public class ProductDAOImpl extends BaseDAO<Product> implements ProductDAO {
 
     }
 
+    @Override
+    public Product getProductById(Integer id) {
+        return super.load("select * from product where id = ? " , id);
+    }
+
+    @Override
+    public void addProduct(Product product) {
+        String sql = "insert into product values(0,?,?,?)";
+        super.executeUpdate(sql,product.getName(),product.getPrice(),product.getImg());
+
+    }
+
+    @Override
+    public void delProduct(Integer id) {
+        super.executeUpdate("delete from product where fid = ? " , id) ;
+
+    }
+
+    @Override
+    public void updateProduct(Product product) {
+        String sql = "update fruit set name = ? , price = ? , img = ? where id = ? " ;
+        super.executeUpdate(sql,product.getName(),product.getPrice(),product.getImg(),product.getId());
+
+
+    }
+
 
 }
