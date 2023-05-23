@@ -32,14 +32,25 @@ public class ProductServlet extends ViewBaseServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-
         String operate = request.getParameter("operate");
         if (StringUtil.isEmpty(operate)) {
             operate = "index";
         }
-        switch (operate){
+        switch (operate) {
             case "index":
-                index(request,response);
+                index(request, response);
+                break;
+            case "add":
+                add(request, response);
+                break;
+            case "del":
+                del(request, response);
+                break;
+            case "edit":
+                edit(request, response);
+                break;
+            case "update":
+                update(request, response);
                 break;
             default:
                 throw new RuntimeException("operate值非法");
@@ -47,6 +58,54 @@ public class ProductServlet extends ViewBaseServlet {
 
 
     }
+
+
+    private void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String idStr = request.getParameter("id");
+        if (StringUtil.isNotEmpty(idStr)) {
+            int id = Integer.parseInt(idStr);
+            Product product = productDAO.getProductById(id);
+            request.setAttribute("product", product);
+            super.processTemplate("edit", request, response);
+
+        }
+    }
+
+
+    private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        Double price = Double.parseDouble(request.getParameter("price"));
+        String img = request.getParameter("img");
+        productDAO.updateProduct(new Product(id, name, price, img));
+        response.sendRedirect("product.do");
+
+    }
+
+    private void del(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String idStr = request.getParameter("id");
+        if (StringUtil.isNotEmpty(idStr)) {
+            int id = Integer.parseInt(idStr);
+            productDAO.delProduct(id);
+            response.sendRedirect("product.do");
+
+        }
+
+    }
+
+    private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String name = request.getParameter("name");
+        Double price = Double.parseDouble(request.getParameter("price"));
+        String img = request.getParameter("img");
+        Product product = new Product(0, name, price, img);
+        productDAO.addProduct(product);
+        response.sendRedirect("product.do");
+
+
+    }
+
 
     private void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
