@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -35,26 +37,25 @@ public class ProductServlet extends ViewBaseServlet {
         if (StringUtil.isEmpty(operate)) {
             operate = "index";
         }
-        switch (operate) {
-            case "index":
-                index(request, response);
-                break;
-            case "add":
-                add(request, response);
-                break;
-            case "del":
-                del(request, response);
-                break;
-            case "edit":
-                edit(request, response);
-                break;
-            case "update":
-                update(request, response);
-                break;
-            default:
-                throw new RuntimeException("operate值非法");
-        }
 
+        //获取当前类中所有方法
+        Method[] methods = this.getClass().getDeclaredMethods();
+        for (Method m :methods){
+            //获取方法名
+            String methodName = m.getName();
+            if (operate.equals(methodName)){
+                //找到和operate同名方法，那么通过反射调用它
+                try {
+                    m.invoke(this,request,response);
+                    return;
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                } catch (InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        throw new RuntimeException("operate值非法");
 
     }
 
