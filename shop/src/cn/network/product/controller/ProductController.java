@@ -31,8 +31,7 @@ public class ProductController {
     ProductDAO productDAO = new ProductDAOImpl();
 
 
-
-    private String list(String oper , String Keyword, HttpServletRequest request){
+    private String list(String oper, String Keyword, HttpServletRequest request) {
         HttpSession session = request.getSession();
 
 
@@ -57,9 +56,6 @@ public class ProductController {
         return "list";
 
     }
-
-
-
 
 
     private String update(Integer id, String name, Double price, String img) {
@@ -87,7 +83,7 @@ public class ProductController {
         return "error";
     }
 
-    private String add(Integer id, String name, Double price, String img){
+    private String add(Integer id, String name, Double price, String img) {
 
         Product product = new Product(0, name, price, img);
         productDAO.addProduct(product);
@@ -97,10 +93,10 @@ public class ProductController {
     }
 
 
-    private String index(String oper , String Keyword , Integer pageNo , HttpServletRequest request){
+    private String index(String oper, String Keyword, Integer pageNo, HttpServletRequest request) {
         HttpSession session = request.getSession();
 
-        if(pageNo==null){
+        if (pageNo == null) {
             pageNo = 1;
         }
 

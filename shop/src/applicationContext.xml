@@ -14,6 +14,6 @@
 
         第一步：通过设置 File->Settings->Build,Execution,Deployment->Compiler->Java Compiler中设置 Addition command paraters：为 -parameters 。
 
-        第二步：Build->Rebuild Project重新build一下project就好了。
+        第二步：Build->Rebuild Project重新build一下project。
 
         -->
