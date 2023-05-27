@@ -55,7 +55,7 @@ public class ProductServlet extends ViewBaseServlet {
                 }
             }
         }
-        throw new RuntimeException("operate值非法");
+        throw new RuntimeException("operate er...................................");
 
     }
 

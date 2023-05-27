@@ -31,6 +31,37 @@ public class ProductController {
     ProductDAO productDAO = new ProductDAOImpl();
 
 
+
+    private String list(String oper , String Keyword, HttpServletRequest request){
+        HttpSession session = request.getSession();
+
+
+        if (StringUtil.isNotEmpty(oper) && "search".equals(oper)) {
+            if (StringUtil.isEmpty(Keyword)) {
+                Keyword = "";
+            }
+            session.setAttribute("keyword", Keyword);
+        } else {
+
+            Object keywordObj = session.getAttribute("keyword");
+            if (keywordObj != null) {
+                Keyword = (String) keywordObj;
+            } else {
+                Keyword = "";
+            }
+        }
+
+        List<Product> productList = productDAO.getProductListAll(Keyword);
+        session.setAttribute("productList", productList);
+
+        return "list";
+
+    }
+
+
+
+
+
     private String update(Integer id, String name, Double price, String img) {
 
         productDAO.updateProduct(new Product(id, name, price, img));
@@ -97,7 +128,7 @@ public class ProductController {
         int pageCount = (productCount + 5 - 1) / 5;
         session.setAttribute("pageCount", pageCount);
 
-        return "redirect:product.do";
+        return "index";
 
     }
 }

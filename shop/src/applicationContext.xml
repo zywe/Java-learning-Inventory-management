@@ -2,7 +2,7 @@
 
 <beans>
     <!-- 这个bean标签的作用是 将来servletpath中涉及的名字对应的是fruit，那么就要FruitController这个类来处理 -->
-    <bean id="fruit" class="cn.network.product.controller.ProductController"/>
+    <bean id="product" class="cn.network.product.controller.ProductController"/>
 </beans>
 
 
