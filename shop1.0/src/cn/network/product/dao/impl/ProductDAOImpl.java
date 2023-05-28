@@ -22,6 +22,11 @@ public class ProductDAOImpl extends BaseDAO<Product> implements ProductDAO {
     }
 
     @Override
+    public List<Product> getProduct() {
+        return super.executeQuery("select * from product");
+    }
+
+    @Override
     public int getProductCount(String keyword) {
         return ((Long) super.executeComplexQuery("select count(*) from product where name like ?", "%" + keyword + "%")[0]).intValue();
 

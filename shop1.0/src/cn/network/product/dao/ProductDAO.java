@@ -16,6 +16,8 @@ import java.util.List;
 public interface ProductDAO {
     List<Product> getProductList(String keyword, Integer pageNo);
 
+    List<Product> getProduct();
+
     int getProductCount(String keyword);
 
     Product getProductById(Integer id);

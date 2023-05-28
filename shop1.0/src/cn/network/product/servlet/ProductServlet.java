@@ -40,13 +40,13 @@ public class ProductServlet extends ViewBaseServlet {
 
         //获取当前类中所有方法
         Method[] methods = this.getClass().getDeclaredMethods();
-        for (Method m :methods){
+        for (Method m : methods) {
             //获取方法名
             String methodName = m.getName();
-            if (operate.equals(methodName)){
+            if (operate.equals(methodName)) {
                 //找到和operate同名方法，那么通过反射调用它
                 try {
-                    m.invoke(this,request,response);
+                    m.invoke(this, request, response);
                     return;
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
@@ -56,6 +56,16 @@ public class ProductServlet extends ViewBaseServlet {
             }
         }
         throw new RuntimeException("operate error...");
+    }
+
+
+    private void content(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
+        List<Product> productList = productDAO.getProduct();
+        session.setAttribute("productList", productList);
+
+        super.processTemplate("content", request, response);
     }
 
 
