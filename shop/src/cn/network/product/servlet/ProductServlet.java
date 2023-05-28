@@ -55,8 +55,7 @@ public class ProductServlet extends ViewBaseServlet {
                 }
             }
         }
-        throw new RuntimeException("operate er...................................");
-
+        throw new RuntimeException("operate error...");
     }
 
 
