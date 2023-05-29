@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script language="JavaScript" src="js/index.js"></script>
+</head>
+<body>
+<div>
+    <header>
+        <h1>商品列表</h1>
+    </header>
+    <div class="wrapper clearfix">
+        <div>
+            <form th:action="@{/admin.do}" style="width:60% ; margin-left: 20%; margin-bottom: 10px;text-align: right">
+                <input type="hidden" name="oper" value="search">
+                请输入关键字：<input type="text" name="keyword" th:value="${session.keyword}">
+                <input type="submit" value="查询" class="btn">
+            </form>
+        </div>
+        <section>
+            <table id="tbl_product_list">
+                <tr>
+                    <th style="width: 100px">商品编号</th>
+                    <th>商品名称</th>
+                    <th style="width: 100px">商品价格</th>
+                    <th style="width: 150px">商品图片</th>
+                    <th style="width: 100px">操作</th>
+                </tr>
+                <tr th:each="product:${session.productList}">
+                    <td th:text="${product.id}">999</td>
+                    <td th:text="${product.name}">HUAWEI Mate 50 RS 保时捷设计 北斗卫星消息 超光变XMAGE影像 超微距长焦摄像头
+                        512GB胭紫瓷华为鸿蒙手机
+                    </td>
+                    <td th:text="${product.price}">12999.00</td>
+                    <td><img th:src="${product.img}"
+                             src="https://img12.360buyimg.com/n1/s450x450_jfs/t1/64221/16/23818/41576/64255081F22a3ccc8/e20706ed94fbed2d.jpg.avif"
+                             class="productImg"></td>
+                    <td>
+                        <img src="img/upd01.png" class="tblImg" alt="" th:onclick="|edit(${product.getId()})|">
+                        <img src="img/del01.png" class="tblImg" alt="" th:onclick="|delProduct(${product.getId()})|">
+                    </td>
+                </tr>
+            </table>
+            <div style="width: 50%; margin-top: 5px;text-align: left; float: left">
+                <input type="button" value="首页" class="btn" th:onclick="|page(1)|" th:disabled="${session.pageNo==1}">
+                <input type="button" value="上一页" class="btn" th:onclick="|page(${session.pageNo-1})|" th:disabled="${session.pageNo==1}">
+                <input type="button" value="下一页" class="btn" th:onclick="|page(${session.pageNo+1})|" th:disabled="${session.pageNo==session.pageCount}">
+                <input type="button" value="尾页" class="btn" th:onclick="|page(${session.pageCount})|" th:disabled="${session.pageNo==session.pageCount}">
+            </div>
+            <div style="width: 50%; margin-top: 5px;text-align: right; float: left">
+                <input type="button" value="添加" class="btn" th:onclick="|add()|">
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

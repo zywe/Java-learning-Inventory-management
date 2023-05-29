@@ -12,7 +12,7 @@
     </header>
     <div class="wrapper clearfix">
         <section>
-            <form id="form_product" action="product.do" method="post" th:object="${product}">
+            <form id="form_product" action="admin.do" method="post" th:object="${product}">
                 <input type="hidden" name="operate" value="update">
                 <input type="hidden" name="id" th:value="*{id}">
                 <table id="tbl_product_list">
