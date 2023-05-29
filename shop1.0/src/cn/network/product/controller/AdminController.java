@@ -64,8 +64,8 @@ public class AdminController extends ViewBaseServlet {
     private void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Integer pageNo = 1;
-        String Keyword = null;
         String oper = request.getParameter("oper");
+        String Keyword = null;
 
         if (StringUtil.isNotEmpty(oper) && "search".equals(oper)) {
             pageNo = 1;
@@ -79,6 +79,7 @@ public class AdminController extends ViewBaseServlet {
             if (StringUtil.isNotEmpty(pageNoStr)) {
                 pageNo = Integer.parseInt(pageNoStr);
             }
+
             Object keywordObj = session.getAttribute("keyword");
             if (keywordObj != null) {
                 Keyword = (String) keywordObj;
@@ -95,8 +96,9 @@ public class AdminController extends ViewBaseServlet {
         int pageCount = (productCount + 5 - 1) / 5;
         session.setAttribute("pageCount", pageCount);
 
-        super.processTemplate("admin", request, response);
+        super.processTemplate("admin/admin", request, response);
     }
+
 
     private void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idStr = request.getParameter("id");
@@ -104,7 +106,7 @@ public class AdminController extends ViewBaseServlet {
             int id = Integer.parseInt(idStr);
             Product product = productDAO.getProductById(id);
             request.setAttribute("product", product);
-            super.processTemplate("edit", request, response);
+            super.processTemplate("admin/edit", request, response);
 
         }
     }

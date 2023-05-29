@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> CONTENT | E-COMMERCE WEBSITE BY EDYODA </title>
-    <link rel="stylesheet" href="css/content.css">
+    <title>商品列表</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 <div id="mainContainer">
-    <h1>商品首页</h1>
+    <h1>商品列表</h1>
+    <h3><a th:href="@{/admin.do}" href="admin/admin.html">进入商品后台管理</a></h3>
     <div id="containerClothing">
         <div th:each="product:${session.productList}" class="box">
             <img th:src="${product.img}"
-                 src="https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/3854721/2018/3/12/11520844673915-BARESKIN-Women-Black-Solid-Lightweight-Leather-Jacket-7761520844673718-1.jpg"
+                 src="https://img12.360buyimg.com/n1/s450x450_jfs/t1/64221/16/23818/41576/64255081F22a3ccc8/e20706ed94fbed2d.jpg.avif"
                  alt="">
             <div class="details">
                 <h4 th:text="${product.name}">Brand Name</h4>

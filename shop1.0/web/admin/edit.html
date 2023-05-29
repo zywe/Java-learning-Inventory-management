@@ -3,31 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" th:href="@{/css/admin.css}" href="../css/admin.css">
 </head>
 <body>
 <div class="container">
     <header>
-        <h1>添加商品</h1>
+        <h1>修改商品</h1>
     </header>
     <div class="wrapper clearfix">
         <section>
-            <form action="product.do" method="post">
-                <input type="hidden" name="operate" value="add">
+            <form id="form_product" action="admin.do" method="post" th:object="${product}">
+                <input type="hidden" name="operate" value="update">
+                <input type="hidden" name="id" th:value="*{id}">
                 <table id="tbl_product_list">
                     <tr>
                         <th>商品名称</th>
-                        <td><input type="text" name="name"></td>
+                        <td><input type="text" name="name" th:value="*{name}"></td>
                     </tr>
                     <tr>
                         <th>商品价格</th>
-                        <td><input type="text" name="price"></td>
-
+                        <td><input type="text" name="price" th:value="*{price}"></td>
                     </tr>
                     <tr>
                         <th>商品图片</th>
-                        <td><input type="text" name="img"></td>
-
+                        <td><input type="text" name="img" th:value="*{img}"></td>
                     </tr>
                     <tr>
                         <th colspan="2">

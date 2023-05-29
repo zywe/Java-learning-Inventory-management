@@ -1,5 +1,5 @@
 function add() {
-    window.location.href = "add.html"
+    window.location.href = "admin/add.html"
 }
 
 
