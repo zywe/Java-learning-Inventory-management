@@ -1,4 +1,4 @@
-package cn.network.product.servlet;
+package cn.network.product.controller;
 
 import cn.network.myssm.myspringmvc.ViewBaseServlet;
 import cn.network.myssm.util.StringUtil;
@@ -26,7 +26,7 @@ import java.util.List;
  */
 
 @WebServlet("/product.do")
-public class ProductServlet extends ViewBaseServlet {
+public class ProductController extends ViewBaseServlet {
 
     ProductDAO productDAO = new ProductDAOImpl();
 

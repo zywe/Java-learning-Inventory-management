@@ -1,4 +1,4 @@
-package cn.network.product.servlet;
+package cn.network.product.controller;
 
 import cn.network.myssm.myspringmvc.ViewBaseServlet;
 import cn.network.myssm.util.StringUtil;
